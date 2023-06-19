@@ -480,10 +480,26 @@ line|z17-[barrier=ditch],
 line|z17-[waterway=drain],
 {width: 1.8;opacity: 1;color: @river;dashes: 0.9,0.9;}
 
-/* Do not draw tunnel waterways */
+/* Draw waterway tunnels from z14 over landcover. */
+line[waterway][tunnel],
+{fill-position: foreground; z-index: 2;}
+line[waterway][tunnel]::tunnelCasing,
+{fill-position: foreground; z-index: 1;}
 
-line[waterway][tunnel]
+line|z1-13[waterway][tunnel],
 {width: 0;}
+line|z14-16[waterway][tunnel],
+{opacity: 0.3;}
+
+line|z17-[waterway][tunnel],
+{color: @white; opacity: 0.2;}
+line|z17-[waterway][tunnel]::tunnelCasing,
+{
+  casing-width-add: 0.3;
+  casing-color: @river;
+  casing-dashes: 4,2;
+  casing-opacity: 0.3;
+}
 
 /* 7.LANDUSE */
 

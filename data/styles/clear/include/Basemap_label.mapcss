@@ -517,11 +517,11 @@ node|z15-[natural=beach],
 
 /* 6.WATER */
 
-[waterway=river],
+[waterway=river][!tunnel],
 [waterway=riverbank],
-[waterway=stream],
-[waterway=canal],
-[waterway=fish_pass],
+[waterway=stream][!tunnel],
+[waterway=canal][!tunnel],
+[waterway=fish_pass][!tunnel],
 [natural=strait],
 [waterway=dam],
 {-x-me-text-priority: 16950;}
@@ -585,7 +585,7 @@ area|z16-[natural=wetland],
 area|z16-[natural=water][!tunnel][bbox_area<4000000],
 {font-size: 11;}
 
-/* 6.2 Line water(river,canal etc.) Do not draw tunnel waterways */
+/* 6.2 Line water(river,canal etc.) */
 
 line|z11-14[waterway=river],
 line|z11-14[waterway=riverbank],
@@ -609,8 +609,11 @@ line|z18-[natural=strait],
 
 line[waterway]
 {text-position: line;}
+
 line[waterway][tunnel]
 {text: none;}
+line|z18-[waterway][tunnel]
+{text:name; font-size: 10; text-color: @water_label; text-opacity: 0.6;}
 
 /* 7. LANDUSE*/
 
