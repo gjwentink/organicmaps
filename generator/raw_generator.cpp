@@ -262,7 +262,10 @@ bool RawGenerator::GenerateFilteredFeatures()
 
   rawGeneratorWriter.ShutdownAndJoin();
   m_names = rawGeneratorWriter.GetNames();
-  LOG(LINFO, ("Names:", m_names));
+  LOG(LINFO, ("Feature data " DATA_FILE_EXTENSION_TMP " files were written for following countries:", m_names));
+  /// @todo: compare to the input list of countries loaded in borders::LoadCountriesList().
+  if (!m_names.size())
+    LOG(LWARNING, ("No feature data " DATA_FILE_EXTENSION_TMP " files were generated for any country!"));
   return true;
 }
 }  // namespace generator
